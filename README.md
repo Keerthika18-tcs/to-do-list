@@ -1,4 +1,4 @@
-# 🏃‍♀️ Daily Health Care Plan Web App
+# 🏃‍♀️ TO-DO-LIST
 
 This project is a **Daily Health Care Plan** web application built using  
 **HTML, CSS, and JavaScript**.  
