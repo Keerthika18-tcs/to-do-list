@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Daily Health Care Plan</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-image: url('./workout.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+    }
+
+    .health-container {
+      background: rgba(0, 0, 0, 0.6); 
+      backdrop-filter: blur(10px); 
+    
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8);
+      width: 90%;
+      max-width: 420px;
+      text-align: center;
+      color: #ffffff;
+    }
+
+    h1 {
+      margin-bottom: 25px;
+      color: #00e5ff;
+      font-size: 28px;
+      text-shadow: 0 0 5px #00e5ff;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      margin: 10px 0;
+      padding: 12px 16px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255, 255, 255, 0.1);
+      color: #e0f7fa;
+      font-weight: 500;
+      box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.05);
+      transition: transform 0.2s ease;
+    }
+
+    li:nth-child(2n) {
+      background: rgba(0, 255, 255, 0.1);
+      color: #b2ebf2;
+    }
+
+    li:nth-child(3n) {
+      background: rgba(255, 255, 255, 0.08);
+      color: #b9f6ca;
+    }
+
+    li:hover {
+      transform: scale(1.02);
+    }
+
+    input[type="checkbox"] {
+      transform: scale(1.4);
+      accent-color: #00e676; 
+      margin-right: 10px;
+    }
+
+    .completed {
+      text-decoration: line-through;
+      opacity: 0.5;
+    }
+
+    .reset-btn {
+      margin-top: 25px;
+      padding: 12px 24px;
+      background-color: #ff1744;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 0 10px #ff1744;
+      transition: background-color 0.3s ease;
+    }
+
+    .reset-btn:hover {
+      background-color: #d50000;
+    }
+  </style>
+</head>
+
+<body>
+  
+
+  <div class="health-container">
+    <h1>Healthcare Plan</h1>
+    <ul id="health-tasks"></ul>
+    <button onclick="resetTasks()" class="reset-btn">Reset</button>
+  </div>
+  <script>
+
+  
+  let tasks = [
+    "Wake up at 5 AM",
+    "Workout / Yoga",
+    "Drink Water (1st glass)",
+    "Healthy Breakfast",
+    "Drink Water (2nd glass)",
+    "Lunch",
+    "Drink Water (3rd glass)",
+    "Evening Walk",
+    "Dinner",
+    "Drink Water (4th glass)"
+  ];
+
+  
+  let taskList = document.getElementById("health-tasks");
+
+  
+  for (let i = 0; i < tasks.length; i++) {
+    let li = document.createElement("li");
+
+    let checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+
+    let label = document.createElement("label");
+    label.innerText = tasks[i];
+
+    checkbox.onchange = function () {
+      if (checkbox.checked) {
+        label.classList.add("completed");
+      } else {
+        label.classList.remove("completed");
+      }
+    };
+
+    li.appendChild(checkbox);
+    li.appendChild(label);
+    taskList.appendChild(li);
+  }
+
+  
+  function resetTasks() {
+    let allCheckboxes = document.querySelectorAll("input[type='checkbox']");
+    allCheckboxes.forEach(function (box) {
+      box.checked = false;
+      box.nextSibling.classList.remove("completed");
+    });
+  }
+</script>
+</body>
+
+</html>
